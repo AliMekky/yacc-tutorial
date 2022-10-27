@@ -15,3 +15,9 @@ int yylex();         // returns tokens by order.
 %%
 int yywrap (void) {return 1;}    // returns 1 when the end of the input occurs
 
+note that : all the tokens declared in the second part of the lex file should be declared in the second part of the yacc file.
+
+yylex -> returns the next token.
+yytext => returns the string value of the current pointer at yylex.
+yylval => returns the actual value of the current pointer at yylex.
+
