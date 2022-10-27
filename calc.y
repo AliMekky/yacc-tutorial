@@ -18,6 +18,9 @@ void updateSymbolVal(char symbol, int val);
 %type <num> line exp term 
 %type <id> assignment
 
+// token => a token returned by lex file
+// type => a variable that will be used in actions
+
 %%
 
 /* descriptions of expected inputs     corresponding actions (in C) */
@@ -29,6 +32,9 @@ line    : assignment ';'		{;}
 		| line print exp ';'	{printf("Printing %d\n", $3);}
 		| line exit_command ';'	{exit(EXIT_SUCCESS);}
         ;
+	
+// anything declared below will not write a corresponding action in the previous production.
+// otherwise will write a corresponding action.
 
 assignment : identifier '=' exp  { updateSymbolVal($1,$3); }
 			;
